@@ -1,3 +1,0 @@
-from flask import Blueprint
-
-from routes.store_location_routes import store_location_routes

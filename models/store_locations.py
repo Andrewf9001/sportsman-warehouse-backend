@@ -19,9 +19,9 @@ class StoreLocations(db.Model):
         self.zip_code = zip_code
         self.phone = phone
 
-class StoreLocationsSchema(ma.Schema):
+class StoreLocationsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        fields = ["name", "address", "city", "state", "zip_code", "phone"]
+        model = StoreLocations
 
 
 store_location_schema = StoreLocationsSchema()
