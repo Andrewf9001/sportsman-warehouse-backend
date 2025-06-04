@@ -3,9 +3,19 @@ from flask import request, jsonify
 from config import db
 from models.store_locations import StoreLocations, store_locations_schema, store_location_schema
 
+
 def get_all_store_locations():
     store_locations = StoreLocations.query.all()
     return jsonify({"results": store_locations_schema.dump(store_locations)})
+
+
+def get_store_location_by_id(id):
+    store_location = db.session.get(StoreLocations, id)
+
+    if not store_location:
+        return jsonify({"error": "Store Location not found"}), 404
+    
+    return jsonify(store_location_schema.dump(store_location))
 
 
 def create_store_location():
