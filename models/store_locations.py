@@ -21,5 +21,8 @@ class StoreLocations(db.Model):
 
 class StoreLocationsSchema(ma.Schema):
     class Meta:
-        fields = ["id", "name", "address", "city", "state", "zip_code", "phone"]
+        fields = ["name", "address", "city", "state", "zip_code", "phone"]
 
+
+store_location_schema = StoreLocationsSchema()
+store_locations_schema = StoreLocationsSchema(many=True)
