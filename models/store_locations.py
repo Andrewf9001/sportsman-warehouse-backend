@@ -4,10 +4,10 @@ from config import db, ma
 class StoreLocations(db.Model):
     __tablename__ = "store_locations"
 
-    id = db.Column(db.Integer, primary_key=True, default=lambda: str(uuid.uuid4()))
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
-    address = db.Column(db.String())
-    city = db.Column(db.String())
+    address = db.Column(db.String(), unique=True)
+    city = db.Column(db.String(), unique=True)
     state = db.Column(db.String())
     zip_code = db.Column(db.String())
     phone = db.Column(db.String())
@@ -27,3 +27,5 @@ class StoreLocationsSchema(ma.SQLAlchemyAutoSchema):
 
 store_location_schema = StoreLocationsSchema()
 store_locations_schema = StoreLocationsSchema(many=True)
+
+# , default=lambda: str(uuid.uuid4())

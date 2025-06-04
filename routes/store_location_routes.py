@@ -17,3 +17,8 @@ def get_store_location_by_id(id):
 @store_location_routes.route("/", methods=["POST"])
 def create_store_location():
     return store_locations_controller.create_store_location()
+
+
+@store_location_routes.route("/delete/<id>", methods=["DELETE"])
+def delete_store_location(id):
+    return store_locations_controller.delete_store_location(id)

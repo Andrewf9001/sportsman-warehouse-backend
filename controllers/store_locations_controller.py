@@ -13,7 +13,7 @@ def get_store_location_by_id(id):
     store_location = db.session.get(StoreLocations, id)
 
     if not store_location:
-        return jsonify({"error": "Store Location not found"}), 404
+        return jsonify({"error": "Store location not found"}), 404
     
     return jsonify(store_location_schema.dump(store_location))
 
@@ -36,3 +36,15 @@ def create_store_location():
     db.session.commit()
 
     return jsonify(store_location_schema.dump(new_store_location))
+
+
+def delete_store_location(id):
+    store_location = StoreLocations.query.filter(StoreLocations.id == id).first()
+
+    if not store_location:
+        return jsonify({"error": "Store location not found"}), 404
+
+    db.session.delete(store_location)
+    db.session.commit()
+
+    return jsonify({"message": "Store Location Deleted"})
