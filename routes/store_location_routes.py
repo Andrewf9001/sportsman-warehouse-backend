@@ -6,3 +6,7 @@ store_location_routes = Blueprint("store_location_routes", __name__)
 @store_location_routes.route("/", methods=["GET"])
 def get_all_store_locations():
     return store_locations_controller.get_all_store_locations()
+
+@store_location_routes.route("/", methods=["POST"])
+def create_store_location():
+    return store_locations_controller.create_store_location()
