@@ -4,6 +4,7 @@ from flask_cors import CORS
 from config import db, ma
 from routes.store_location_routes import store_location_routes
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -21,6 +22,6 @@ def create_app():
 
     return app
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     app = create_app()
     app.run(debug=True)
