@@ -1,10 +1,8 @@
 import uuid
 from config import db, ma
 
-class StoreLocations(db.Model):
-    __tablename__ = "store_locations"
-
-    id = db.Column(db.String, primary_key=True, default=lambda: str(uuid.uuid4()))
+class Stores(db.Model):
+    store_id = db.Column(db.String, primary_key=True, default=lambda: str(uuid.uuid4()))
     name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, unique=True)
     city = db.Column(db.String, unique=True)
@@ -20,10 +18,10 @@ class StoreLocations(db.Model):
         self.zip_code = zip_code
         self.phone = phone
 
-class StoreLocationsSchema(ma.SQLAlchemyAutoSchema):
+class StoresSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        model = StoreLocations
+        model = Stores
 
 
-store_location_schema = StoreLocationsSchema()
-store_locations_schema = StoreLocationsSchema(many=True)
+store_schema = StoresSchema()
+stores_schema = StoresSchema(many=True)
