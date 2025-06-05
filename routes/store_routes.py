@@ -19,6 +19,11 @@ def create_store():
     return stores_controller.create_store()
 
 
+@store_routes.route("/<store_id>", methods=["PUT", "PATCH"])
+def update_store(store_id):
+    return stores_controller.update_store(store_id)
+
+
 @store_routes.route("/delete/<store_id>", methods=["DELETE"])
 def delete_store(store_id):
     return stores_controller.delete_store(store_id)

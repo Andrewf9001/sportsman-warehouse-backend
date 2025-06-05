@@ -21,6 +21,7 @@ class Stores(db.Model):
 class StoresSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Stores
+        load_instance = True
 
 
 store_schema = StoresSchema()

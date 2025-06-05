@@ -38,6 +38,25 @@ def create_store():
     return jsonify(store_schema.dump(new_store))
 
 
+def update_store(store_id):
+    store = Stores.query.get_or_404(store_id)
+
+    try:
+        store_data = request.get_json()
+        store = store_schema.load(
+            store_data,
+            instance=store,
+            partial=True
+        )
+
+        db.session.commit()
+        return jsonify(store_schema.dump(store))
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
+
+
+
 def delete_store(store_id):
     store = Stores.query.filter(Stores.store_id == store_id).first()
 
