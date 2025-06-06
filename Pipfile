@@ -10,6 +10,8 @@ flask-cors = "*"
 marshmallow = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+flask-jwt-extended = "*"
+werkzeug = "*"
 
 [dev-packages]
 
