@@ -4,6 +4,7 @@ from flask_cors import CORS
 
 from config import db, ma, jwt
 from routes.store_routes import store_routes
+from routes.user_routes import user_routes
 
 
 def create_app():
@@ -20,6 +21,7 @@ def create_app():
     CORS(app, origins=["http://localhost:5173"])
     
     app.register_blueprint(store_routes, url_prefix="/api/stores")
+    app.register_blueprint(user_routes, url_prefix="/api/user")
 
     with app.app_context():
         db.create_all()
