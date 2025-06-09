@@ -10,13 +10,15 @@ class Users(db.Model):
     user_name = db.Column(db.String)
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
+    role = db.Column(db.String, default="user")
 
-    def __init__(self, first_name, last_name, user_name, email, password):
+    def __init__(self, first_name, last_name, user_name, email, password, role):
         self.first_name = first_name
         self.last_name = last_name
         self.user_name = user_name
         self.email = email
         self.password = password
+        self.role = role
         
 
     def set_password(self, password):
